@@ -1,2 +1,545 @@
-# otman.dev
-Portfolio
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Otman Echatbi | Full Stack Developer</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+   
+    .navbar {
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .nav-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.6rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #0f2b3d, #1e4a6e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #1e293b;
+      transition: 0.2s;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: #2c7da0;
+    }
+
+   
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #0f172a;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.25s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #0f172a;
+      color: #0f172a;
+    }
+
+    .btn-outline:hover {
+      background: #0f172a;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #2c7da0;
+      transform: translateY(-2px);
+    }
+
+    section {
+      padding: 5rem 0;
+    }
+
+    .hero {
+      padding-top: 3rem;
+      padding-bottom: 4rem;
+    }
+
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2.5rem;
+    }
+
+    .hero-content {
+      flex: 1.2;
+    }
+
+    .hero-badge {
+      background: #e2e8f0;
+      display: inline-block;
+      padding: 0.3rem 0.9rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      color: #1e293b;
+    }
+
+    .hero-content h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .highlight {
+      background: linear-gradient(120deg, #1e4a6e, #2c7da0);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: #334155;
+      max-width: 550px;
+      margin: 1.2rem 0 1.8rem;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1.2rem;
+      margin: 1.8rem 0 0;
+      flex-wrap: wrap;
+    }
+
+    .social-icons a {
+      background: #f1f5f9;
+      color: #1e293b;
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      transition: 0.2s;
+    }
+
+    .social-icons a:hover {
+      background: #2c7da0;
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .hero-image {
+      flex: 0.8;
+      background: linear-gradient(145deg, #e0f2fe, #ffffff);
+      border-radius: 40% 60% 30% 70% / 50% 40% 60% 50%;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+    }
+
+    .hero-image i {
+      font-size: 10rem;
+      color: #1e4a6e;
+      opacity: 0.9;
+    }
+
+    
+    .skills-section {
+      background: white;
+      border-radius: 2rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.03);
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60%;
+      height: 3px;
+      background: #2c7da0;
+      border-radius: 3px;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .skill-card {
+      background: #f1f5f9;
+      padding: 0.7rem 1.4rem;
+      border-radius: 40px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      transition: 0.2s;
+    }
+
+    .skill-card i {
+      color: #2c7da0;
+      font-size: 1.1rem;
+    }
+
+    .skill-card:hover {
+      background: #e2e8f0;
+      transform: scale(1.02);
+    }
+
+   
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .project-item {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+      transition: 0.25s;
+      border: 1px solid #eef2ff;
+    }
+
+    .project-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12);
+    }
+
+    .project-icon {
+      font-size: 2.2rem;
+      color: #2c7da0;
+      margin-bottom: 1rem;
+    }
+
+    .project-item h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .project-tags span {
+      background: #eef2ff;
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    
+    .contact-card {
+      background: white;
+      border-radius: 2rem;
+      padding: 2rem 2rem;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+      border: 1px solid #e2e8f0;
+    }
+
+    .email-link {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #0f172a;
+      text-decoration: none;
+      background: #f1f5f9;
+      padding: 0.6rem 1.6rem;
+      border-radius: 50px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin: 1rem 0;
+    }
+
+    .footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.4rem;
+      }
+      .nav-flex {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .nav-links {
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .container {
+        padding: 0 1.5rem;
+      }
+      .hero-grid {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-desc {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .social-icons {
+        justify-content: center;
+      }
+      .section-title:after {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40%;
+      }
+      .section-title {
+        text-align: center;
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="container">
+    <div class="nav-flex">
+      <div class="logo">Otman-Echatbi</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main>
+  
+  <section id="home" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-map-marker-alt"></i> Casablanca / Morocco
+        </div>
+        <h1>Full Stack Developer <br> <span class="highlight">Otman Echatbi</span></h1>
+        <p class="hero-desc">
+          Building robust web applications with modern technologies. 
+          Passionate about clean code, user experience, and solving real-world problems.
+        </p>
+        <div class="btn-group" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Hire me</a>
+          <a href="#projects" class="btn btn-outline"><i class="fas fa-code-branch"></i> Explore work</a>
+        </div>
+        <div class="social-icons">
+          <a href="https://github.com/echatbiotman-debug" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/otman-echatbi/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://x.com/echatbi47285" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.instagram.com/ot______man/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <i class="fas fa-laptop-code"></i>
+        <div style="margin-top: 1rem; font-weight: 600; color:#1e4a6e;">#FullStackMagic</div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="skills" class="skills-section">
+    <div class="container">
+      <h2 class="section-title">Technical Arsenal</h2>
+      <div class="skills-grid">
+        <span class="skill-card"><i class="fab fa-js"></i> JavaScript / TypeScript</span>
+        <span class="skill-card"><i class="fab fa-react"></i> React & Next.js</span>
+        <span class="skill-card"><i class="fab fa-node-js"></i> Node.js / Express</span>
+        <span class="skill-card"><i class="fas fa-database"></i> MongoDB / PostgreSQL</span>
+        <span class="skill-card"><i class="fab fa-python"></i> Python / Django</span>
+        <span class="skill-card"><i class="fab fa-vuejs"></i> Vue.js</span>
+        <span class="skill-card"><i class="fas fa-cloud"></i> AWS / Vercel</span>
+        <span class="skill-card"><i class="fab fa-git-alt"></i> Git & CI/CD</span>
+        <span class="skill-card"><i class="fas fa-mobile-alt"></i> Responsive Design</span>
+        <span class="skill-card"><i class="fas fa-shield-alt"></i> REST / GraphQL</span>
+      </div>
+    
+      <div style="margin-top: 2rem;">
+        <p style="color: #334155; font-weight: 500;"><i class="fas fa-brain"></i> Problem solver · Team collaborator · Agile mindset · Bilingual (EN/FR/AR)</p>
+      </div>
+    </div>
+  </section>
+
+ 
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-grid">
+        <div class="project-item">
+          <div class="project-icon"><i class="fas fa-store"></i></div>
+          <h3>E-Shop Africa</h3>
+          <p>Full-stack e‑commerce platform with cart, payments (Stripe), and admin dashboard. React + Node.js + MongoDB.</p>
+          <div class="project-tags"><span>React</span><span>Node.js</span><span>MongoDB</span><span>JWT</span></div>
+          <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+            <a href="#" style="font-size: 0.85rem; color:#2c7da0;"><i class="fab fa-github"></i> Code</a>
+            <a href="#" style="font-size: 0.85rem; color:#2c7da0;"><i class="fas fa-external-link-alt"></i> Preview</a>
+          </div>
+        </div>
+        <div class="project-item">
+          <div class="project-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>DevMetrics Dashboard</h3>
+          <p>Analytics dashboard for dev teams: visualize PRs, commits, and velocity. Next.js + Tailwind + Express + PostgreSQL.</p>
+          <div class="project-tags"><span>Next.js</span><span>Tailwind</span><span>Express</span><span>Chart.js</span></div>
+          <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+            <a href="#" style="font-size: 0.85rem; color:#2c7da0;"><i class="fab fa-github"></i> Repo</a>
+            <a href="#" style="font-size: 0.85rem; color:#2c7da0;"><i class="fas fa-globe"></i> Live Demo</a>
+          </div>
+        </div>
+        <div class="project-item">
+          <div class="project-icon"><i class="fas fa-tasks"></i></div>
+          <h3>FlowSpace Collab</h3>
+          <p>Real-time project management tool with task boards, comments, and file sharing. Vue 3 + Laravel + WebSockets.</p>
+          <div class="project-tags"><span>Vue 3</span><span>Laravel</span><span>WebSockets</span><span>MySQL</span></div>
+          <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+            <a href="#" style="font-size: 0.85rem; color:#2c7da0;"><i class="fab fa-github"></i> Source</a>
+            <a href="#" style="font-size: 0.85rem; color:#2c7da0;"><i class="fas fa-video"></i> Demo</a>
+          </div>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 2rem;">
+        <a href="https://github.com/echatbiotman-debug" target="_blank" class="btn btn-outline"><i class="fab fa-github"></i> See more on GitHub →</a>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="contact">
+    <div class="container">
+      <div class="contact-card">
+        <i class="fas fa-envelope-open-text" style="font-size: 2.5rem; color:#2c7da0; margin-bottom: 0.5rem; display: inline-block;"></i>
+        <h2 style="margin-bottom: 0.5rem;">Let's build something great</h2>
+        <p style="max-width: 500px; margin: 0 auto 1rem auto; color:#334155;">Available for freelance or full-time opportunities. Reach out anytime.</p>
+        <a href="mailto:echatbiotman@gmail.com" class="email-link">
+          <i class="fas fa-paper-plane"></i> echatbiotman@gmail.com
+        </a>
+        <div style="margin-top: 1rem; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+          <a href="https://github.com/echatbiotman-debug" target="_blank" style="text-decoration: none; font-weight: 500; color:#1e293b;"><i class="fab fa-github"></i> GitHub</a>
+          <a href="https://www.linkedin.com/in/otman-echatbi/" target="_blank" style="text-decoration: none; font-weight: 500; color:#1e293b;"><i class="fab fa-linkedin"></i> LinkedIn</a>
+          <a href="https://x.com/echatbi47285" target="_blank" style="text-decoration: none; font-weight: 500; color:#1e293b;"><i class="fab fa-twitter"></i> X (Twitter)</a>
+          <a href="https://www.instagram.com/ot______man/" target="_blank" style="text-decoration: none; font-weight: 500; color:#1e293b;"><i class="fab fa-instagram"></i> Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>© 2025 Otman Echatbi — Full Stack Developer. Built with <i class="fas fa-heart" style="color:#ff7b72;"></i> in Morocco.</p>
+    <p style="margin-top: 0.5rem; font-size: 0.75rem;">Coding the future, one commit at a time.</p>
+  </div>
+</footer>
+
+
+<script>
+  (function(){
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === "#" || targetId === "") return;
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          
+        }
+      });
+    });
+    
+    const yearSpan = document.querySelector('.footer .container p:first-child');
+    if(yearSpan) {
+      const currentYear = new Date().getFullYear();
+      if(yearSpan.innerHTML.includes('2025')) {
+        yearSpan.innerHTML = `© ${currentYear} Otman Echatbi — Full Stack Developer. Built with <i class="fas fa-heart" style="color:#ff7b72;"></i> in Morocco.`;
+      }
+    }
+  })();
+</script>
+</body>
+</html>
